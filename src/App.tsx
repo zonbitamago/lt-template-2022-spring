@@ -4,9 +4,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to React Router!</h1>
-
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
