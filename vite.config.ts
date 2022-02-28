@@ -3,6 +3,6 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "lt-template-2022-spring",
+  base: "/lt-template-2022-spring/",
   plugins: [react()],
 });
