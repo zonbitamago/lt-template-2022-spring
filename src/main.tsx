@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import App from "./App";
+import Router from "./Router";
 import "./index.css";
 
 ReactDOM.render(
@@ -11,7 +11,7 @@ ReactDOM.render(
     <RecoilRoot>
       <ChakraProvider>
         <BrowserRouter basename="/lt-template-2022-spring">
-          <App />
+          <Router />
         </BrowserRouter>
       </ChakraProvider>
     </RecoilRoot>

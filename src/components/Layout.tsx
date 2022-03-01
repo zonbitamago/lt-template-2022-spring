@@ -1,14 +1,36 @@
 import { Center, Grid, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { isPageForwardState } from "../recoil/isPageForwardStateAtom";
+import { routeMapping } from "../Router";
 
 const Layout: React.FC = ({ children }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isPageForward, setIsPageForward] = useRecoilState(isPageForwardState);
+  const [backPage, setBackPage] = useState("");
+  const [forwardPage, setForwardPage] = useState("");
+
+  useEffect(() => {
+    const pathname = location.pathname;
+    const routerIndex = routeMapping.findIndex((elem) => {
+      return elem.path === pathname;
+    });
+
+    const forwardPagePath =
+      routerIndex + 1 === routeMapping.length
+        ? ""
+        : routeMapping[routerIndex + 1].path;
+
+    const backPagePath =
+      routerIndex === 0 ? "" : routeMapping[routerIndex - 1].path;
+
+    setForwardPage(forwardPagePath);
+    setBackPage(backPagePath);
+  }, [location]);
   return (
     <div>
       <motion.div
@@ -26,8 +48,7 @@ const Layout: React.FC = ({ children }) => {
         }}
         transition={{
           duration: 0.2,
-        }}
-      >
+        }}>
         <Grid templateColumns={"48px 1fr 48px"} height="100vh">
           <Center>
             <IconButton
@@ -41,7 +62,7 @@ const Layout: React.FC = ({ children }) => {
               height={"40px"}
               onClick={() => {
                 setIsPageForward(false);
-                navigate("/");
+                navigate(backPage);
               }}
             />
           </Center>
@@ -58,7 +79,7 @@ const Layout: React.FC = ({ children }) => {
               height={"40px"}
               onClick={() => {
                 setIsPageForward(true);
-                navigate("/about");
+                navigate(forwardPage);
               }}
             />
           </Center>
