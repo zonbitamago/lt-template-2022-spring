@@ -14,6 +14,16 @@ const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
   const [backPage, setBackPage] = useState("");
   const [forwardPage, setForwardPage] = useState("");
 
+  const forwardPageCallback = () => {
+    setIsPageForward(false);
+    navigate(backPage);
+  };
+
+  const backPageCallback = () => {
+    setIsPageForward(true);
+    navigate(forwardPage);
+  };
+
   useEffect(() => {
     const pathname = location.pathname;
     const routerIndex = routeMapping.findIndex((elem) => {
@@ -31,6 +41,7 @@ const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
     setForwardPage(forwardPagePath);
     setBackPage(backPagePath);
   }, [location]);
+
   return (
     <div style={{ backgroundColor: isTop ? "#FD7D07" : "#FFF3DC" }}>
       <motion.div
@@ -60,10 +71,7 @@ const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
               m="1"
               width={"32px"}
               height={"40px"}
-              onClick={() => {
-                setIsPageForward(false);
-                navigate(backPage);
-              }}
+              onClick={forwardPageCallback}
             />
           </Center>
           <Box ml="8" mr="8">
@@ -79,10 +87,7 @@ const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
               m="1"
               width={"32px"}
               height={"40px"}
-              onClick={() => {
-                setIsPageForward(true);
-                navigate(forwardPage);
-              }}
+              onClick={backPageCallback}
             />
           </Center>
         </Grid>
