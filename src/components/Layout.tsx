@@ -14,15 +14,30 @@ const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
   const [backPage, setBackPage] = useState("");
   const [forwardPage, setForwardPage] = useState("");
 
-  const forwardPageCallback = () => {
+  const backPageCallback = () => {
     setIsPageForward(false);
     navigate(backPage);
   };
 
-  const backPageCallback = () => {
+  const forwardPageCallback = () => {
     setIsPageForward(true);
     navigate(forwardPage);
   };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "ArrowLeft") {
+      backPageCallback();
+    } else if (event.key === "ArrowRight") {
+      forwardPageCallback();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPageForward, backPage, forwardPage]);
 
   useEffect(() => {
     const pathname = location.pathname;
@@ -59,7 +74,8 @@ const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
         }}
         transition={{
           duration: 0.2,
-        }}>
+        }}
+      >
         <Grid templateColumns={"48px 1fr 48px"} height="100vh">
           <Center>
             <IconButton
