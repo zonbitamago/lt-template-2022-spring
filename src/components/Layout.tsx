@@ -1,4 +1,4 @@
-import { Center, Grid, IconButton } from "@chakra-ui/react";
+import { Box, Center, Grid, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -66,7 +66,9 @@ const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
               }}
             />
           </Center>
-          <div>{children}</div>
+          <Box ml="8" mr="8">
+            {children}
+          </Box>
           <Center>
             <IconButton
               aria-label="forward"
