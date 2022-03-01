@@ -1,11 +1,10 @@
-import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 
-const Home = () => {
+const Top = () => {
   return (
-    <Layout>
+    <Layout isTop={true}>
       <main>
         <h2>Welcome to the homepage!</h2>
         <p>You can do this, I believe in you.</p>
@@ -17,4 +16,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Top;

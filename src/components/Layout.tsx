@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 import { isPageForwardState } from "../recoil/isPageForwardStateAtom";
 import { routeMapping } from "../Router";
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC<{ isTop?: boolean }> = ({ children, isTop }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isPageForward, setIsPageForward] = useRecoilState(isPageForwardState);
@@ -32,7 +32,7 @@ const Layout: React.FC = ({ children }) => {
     setBackPage(backPagePath);
   }, [location]);
   return (
-    <div>
+    <div style={{ backgroundColor: isTop ? "#FD7D07" : "#FFF3DC" }}>
       <motion.div
         animate={{
           x: 0,

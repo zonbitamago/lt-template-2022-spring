@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
-import Home from "./pages/Home";
+import Top from "./pages/Top";
 import Sample from "./pages/Sample";
 
 function Router() {
@@ -20,7 +20,7 @@ export default Router;
 export const routeMapping = [
   {
     path: "/",
-    element: <Home />,
+    element: <Top />,
   },
   {
     path: "/about",
