@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
+import Introduction from "./pages/Introduction";
 import Sample from "./pages/Sample";
 import Top from "./pages/Top";
 
@@ -22,6 +23,11 @@ export const routeMapping = [
     path: "/",
     element: <Top />,
   },
+  {
+    path: "/introduction",
+    element: <Introduction />,
+  },
+
   {
     path: "/about",
     element: <About />,
