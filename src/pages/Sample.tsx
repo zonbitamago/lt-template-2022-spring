@@ -1,10 +1,13 @@
 import React from "react";
+import DetailCenterLayout from "../components/DetailCenterLayout";
 import Layout from "../components/Layout";
 
 const Sample = () => {
   return (
     <Layout>
-      <div>Sample</div>
+      <DetailCenterLayout>
+        <div>Sample</div>
+      </DetailCenterLayout>
     </Layout>
   );
 };
