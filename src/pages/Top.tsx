@@ -13,7 +13,7 @@ const Top = () => {
             h="100%"
             sx={{ textAlign: "left", position: "absolute", bottom: "-40%" }}>
             Welcome to <br />
-            the homepage!
+            the LT Template!
           </Heading>
         </Box>
         <Box h="50%" w="100%">
